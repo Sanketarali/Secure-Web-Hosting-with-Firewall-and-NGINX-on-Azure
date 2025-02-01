@@ -40,4 +40,20 @@ Basic knowledge of Azure networking and Linux commands
 
 2. Create a Subnet
 <h4>az network vnet subnet create --resource-group MyResourceGroup --vnet-name MyVNet --name MySubnet --address-prefix 10.0.1.0/24</h4>
+
+3. Deploy an Azure Firewall
+<h4>az network firewall create --resource-group MyResourceGroup --name MyFirewall</h4>
+
+4. Create a Virtual Machine and Install NGINX
+<h4>az network vnet subnet create --resource-group MyResourceGroup --vnet-name MyVNet --name MySubnet --address-prefix 10.0.1.0/24</h4>
+
+5. Install NGINX and Deploy an HTML Page
+<h4>ssh azureuser@VM_IP_ADDRESS
+sudo apt update && sudo apt install nginx -y
+sudo echo 'Welcome to Secure Web Hosting on Azure<' | sudo tee /var/www/html/index.html
+sudo systemctl restart nginx</h4>
+
+6. Configure Azure Firewall Rules
+   Allow HTTP (Port 80)
+<h4>az network firewall policy rule-collection-group rule add --resource-group MyResourceGroup --firewall-policy-name MyFirewallPolicy --rule-collection-group-name MyRuleGroup --name AllowWebTraffic --priority 100 --rule-type NetworkRule --action Allow --destination-addresses "*" --destination-ports "80" --protocols TCP</h4>
    
