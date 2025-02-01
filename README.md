@@ -56,4 +56,21 @@ sudo systemctl restart nginx</h4>
 6. Configure Azure Firewall Rules
    Allow HTTP (Port 80)
 <h4>az network firewall policy rule-collection-group rule add --resource-group MyResourceGroup --firewall-policy-name MyFirewallPolicy --rule-collection-group-name MyRuleGroup --name AllowWebTraffic --priority 100 --rule-type NetworkRule --action Allow --destination-addresses "*" --destination-ports "80" --protocols TCP</h4>
-   
+
+# Accessing the Web Server
+Visit:<br>
+<h4>http://VM_PUBLIC_IP</h4>
+
+# Security Best Practices
+
+Restrict SSH Access: Use Azure Firewall rules to allow SSH only from specific IPs.
+
+Enable Network Security Groups (NSGs): Implement additional NSG rules for granular control.
+
+Use HTTPS: Install an SSL certificate for encrypted communication.
+
+Regular Updates: Keep your NGINX server and VM updated to patch vulnerabilities.
+
+# Conclusion
+
+This project showcases a secure approach to web hosting on Azure using NGINX, protected by an Azure Firewall. By implementing a well-structured VNet, subnet, and access control policies, we enhance the security posture of our hosted content.
